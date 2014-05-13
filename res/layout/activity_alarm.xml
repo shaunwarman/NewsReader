@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+    
+    <Spinner
+        android:id="@+id/alarm_sections"
+        android:layout_width="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"/>
+
+    <TimePicker
+        android:id="@+id/time_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/alarm_sections"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <Button
+        android:id="@+id/set_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/time_picker"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/cancel_button"
+        android:onClick="setAlarm"
+        android:text="@string/set_text"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/time_picker"
+        android:layout_alignParentRight="true"
+        android:text="@string/cancel_alarm_text"
+        android:textSize="15sp"
+        android:onClick="cancelAlarm" />
+
+</RelativeLayout>
