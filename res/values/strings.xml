@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">News Reader</string>
+    <string name="sections">Choose a section</string>
+    <string name="alarm_text">Set Alarm</string>
+    <string name="read_text">Read</string>
+    <string name="set_text">Set</string>
+    <string name="cancel_alarm_text">Cancel</string>
+    <string name="create_alarm">Create Alarm</string>
+    <string name="set_alarm_activity_title">Set Alarm</string>
+    
+
+    <string-array name="section_arrays">
+        <item>World</item>
+        <item>United States</item>
+        <item>Business</item>
+        <item>Technology</item>
+        <item>Entertainment</item>
+        <item>Sports</item>
+        <item>Science</item>
+        <item>Health</item>
+    </string-array>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_alarm">Alarm</string>
+
+</resources>

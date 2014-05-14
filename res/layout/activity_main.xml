@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+    
+    <Button
+        android:id="@+id/dates"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="@string/read_text"
+        android:layout_toLeftOf="@+id/times"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:onClick="readText"/>
+    <Button
+        android:id="@id/times"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="@string/alarm_text"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:onClick="setAlarm"/>
+    <Spinner
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dates"/>
+    <com.example.newsreader.MyListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:drawSelectorOnTop="false"
+        android:layout_below="@id/name" />
+</RelativeLayout>
