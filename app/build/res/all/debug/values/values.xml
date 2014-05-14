@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/home/shaun/Development/Source/NewsReader/app/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string-array name="section_arrays">
+        <item>World</item>
+        <item>United States</item>
+        <item>Business</item>
+        <item>Technology</item>
+        <item>Entertainment</item>
+        <item>Sports</item>
+        <item>Science</item>
+        <item>Health</item>
+    </string-array>
+
+    <string name="alarm_text">Set Alarm</string>
+    <string name="app_name">News Reader</string>
+    <string name="cancel_alarm_text">Cancel</string>
+    <string name="create_alarm">Create Alarm</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="read_text">Read</string>
+    <string name="sections">Choose a section</string>
+    <string name="set_alarm_activity_title">Set Alarm</string>
+    <string name="set_text">Set</string>
+    <string name="title_activity_alarm">Alarm</string>
+    <!-- From: file:/home/shaun/Development/Source/NewsReader/app/src/main/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="AppBaseTheme" parent="android:Theme.Holo">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+</resources>
