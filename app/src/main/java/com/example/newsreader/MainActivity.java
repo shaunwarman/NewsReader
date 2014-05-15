@@ -86,12 +86,6 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
 		return newsSection;
 	}
 
-	public void setAlarm(View view) {
-		Intent intent = new Intent(this, SetAlarmActivity.class);
-		startActivity(intent);
-	}
-
-
 	// create the user interface in the activity
 	public void init() {
 		spinner = (Spinner) findViewById(R.id.name);
