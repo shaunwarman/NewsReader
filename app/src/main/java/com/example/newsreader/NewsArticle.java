@@ -4,7 +4,8 @@ public class NewsArticle {
 	private String title;
 	private String summary;
 	private String source;
-	
+
+    public NewsArticle() {}
 	
 	public void setTitle(String title) {
 		this.title = title;

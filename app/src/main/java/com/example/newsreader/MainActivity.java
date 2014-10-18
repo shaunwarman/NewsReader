@@ -123,16 +123,16 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
 		lv.setOnItemClickListener(mMessageClickedHandler);
 
 		spinner.setOnItemSelectedListener(
-				new OnItemSelectedListener(){
-					public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-						startWebServiceTask(getSectionFromDropDown());
-					}
+            new OnItemSelectedListener(){
+                public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    startWebServiceTask(getSectionFromDropDown());
+                }
 
-					public void onNothingSelected(AdapterView<?> arg0) {
+                public void onNothingSelected(AdapterView<?> arg0) {
 
-					}
-				}
-				);
+                }
+            }
+            );
 	}
 
 	@Override
@@ -223,15 +223,15 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
 
 		@Override
 		protected ArrayList<String> doInBackground(String... params) {
-			Log.i("Adapter Count before clear is ", String.valueOf(lvAdapter.getCount()));
+			HtmlParser parser = new HtmlParser();
 
 			clearArrays();
 
 			String news = grabNews(params[0]);
-			List<NewsArticle> list = parseHTML(news);
+			List<NewsArticle> list = parser.parseHTML(news);
 			StringBuilder sb = new StringBuilder();
 			for(NewsArticle na : list) {
-				
+
 				tempArray.add(na.getTitle());
 				urlArray.add(na.getSource());
 				summaryArray.add(na.getSummary());
@@ -248,11 +248,15 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
 			dialog.hide();
 		}
 
-		// grab the news specified by the news section in the drop down list
+        /**
+         * grab the news specified by the news section in the drop down list
+         * @param url
+         * @return news
+         */
 		public String grabNews(String url) {
 			String news = null;
 
-			//			Log.i("Grab news method", "Grabbing news method entered " + url);
+			// Log.i("Grab news method", "Grabbing news method entered " + url);
 			try {
 				URL feedzillaURL = new URL(url);
 				HttpURLConnection con = (HttpURLConnection) feedzillaURL.openConnection();
@@ -265,41 +269,6 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
 			return news;
 		}
 
-		public List<NewsArticle> parseHTML(String html) {
-			String title = null;
-			String summary = null;
-			String source = null;
-			String current = null;
-			List<NewsArticle> articles = new LinkedList<NewsArticle>();
-			NewsArticle pa;
-
-			for(int a = 0; a <= 10; a++) {
-				pa = new NewsArticle();
-				if(html.indexOf("<title type=\"html\"") == -1) {
-					break;
-				}
-
-				html = html.substring(html.indexOf("<title type=\"html\""));
-				current = html.substring(html.indexOf("title type=\"html\"")+18, html.indexOf("</title>"));
-				title = current;
-				pa.setTitle(title);
-				for(int b = 0; b <1; b++) {
-					html = html.substring(html.indexOf("<summary type=\"html\""));
-					current = html.substring(html.indexOf("summary type=\"html\"")+20, html.indexOf("&lt;"));
-					summary = current;
-					pa.setSummary(summary);
-					for(int c = 0; c<1;c++) {
-						html = html.substring(html.indexOf("<link rel=\"alternate\""));
-						current = html.substring(html.indexOf("<link rel=\"alternate\" href=\"")+28, html.indexOf("\" />"));
-						//						Log.i("SOURCE", current);
-						source = current;
-						pa.setSource(source);
-						articles.add(pa);
-					}
-				}
-			}
-			return articles;
-		}
 
 		public String readStream(InputStream in) {
 			BufferedReader reader = null;
