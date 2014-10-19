@@ -227,7 +227,7 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
 
 			clearArrays();
 
-			String news = grabNews(params[0]);
+			String news = parser.grabNews(params[0]);
 			List<NewsArticle> list = parser.parseHTML(news);
 			StringBuilder sb = new StringBuilder();
 			for(NewsArticle na : list) {
@@ -247,51 +247,6 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
 			lvAdapter.notifyDataSetChanged();
 			dialog.hide();
 		}
-
-        /**
-         * grab the news specified by the news section in the drop down list
-         * @param url
-         * @return news
-         */
-		public String grabNews(String url) {
-			String news = null;
-
-			// Log.i("Grab news method", "Grabbing news method entered " + url);
-			try {
-				URL feedzillaURL = new URL(url);
-				HttpURLConnection con = (HttpURLConnection) feedzillaURL.openConnection();
-				InputStream in = new BufferedInputStream(con.getInputStream());
-				news = readStream(in);
-				//				Log.i("HTML", news);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return news;
-		}
-
-
-		public String readStream(InputStream in) {
-			BufferedReader reader = null;
-			StringBuilder sb = new StringBuilder();
-			try {
-				reader = new BufferedReader(new InputStreamReader(in));
-				String line = null;
-				while ((line = reader.readLine()) != null) {
-					sb.append(line);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			} finally {
-				if (reader != null) {
-					try {
-						reader.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			return sb.toString();
-		} 
 
 	}
 }

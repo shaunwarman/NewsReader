@@ -1,5 +1,12 @@
 package com.example.newsreader;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -47,6 +54,51 @@ public class HtmlParser {
             }
         }
         return articles;
+    }
+
+
+    /**
+     * grab the news specified by the news section in the drop down list
+     * @param url
+     * @return news
+     */
+    public String grabNews(String url) {
+        String news = null;
+
+        // Log.i("Grab news method", "Grabbing news method entered " + url);
+        try {
+            URL feedzillaURL = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) feedzillaURL.openConnection();
+            InputStream in = new BufferedInputStream(con.getInputStream());
+            news = readStream(in);
+            //				Log.i("HTML", news);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return news;
+    }
+
+    public String readStream(InputStream in) {
+        BufferedReader reader = null;
+        StringBuilder sb = new StringBuilder();
+        try {
+            reader = new BufferedReader(new InputStreamReader(in));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return sb.toString();
     }
 
 }
